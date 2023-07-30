@@ -1,0 +1,111 @@
+*{
+  margin:0;padding: 0;box-sizing:border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Titan One', cursive;
+  }
+  header{
+ width :"100%"; height:"100vh" ;
+  }
+  nav{
+width :"100%";height:"20vh";
+background-color: rgb(233, 201, 23) ;
+color:rgb(15, 64, 2);display: flex;justify-content:space-between;
+align-items:center;text-transform: uppercase;
+  }
+
+  nav .titlee{
+    color: black;
+  }
+
+  nav .animate{
+   animation-name: bounce;
+   animation-duration: 2s;
+  }
+
+  nav .logo{
+    width: 35%;align-content: center;align-items: center;
+  
+  }
+
+  nav .menu{
+    width: 60%;display: flex;justify-content: space-around;
+  }
+ 
+  nav .menu a{
+    width: 25%;text-decoration: none;font-weight: bold;
+  }
+
+  main {
+    width: 100%;height:80vh;background-image:linear-gradient(rgba(254, 200, 124, 0.3),rgba(250, 242, 183, 0.1)),url("images/back2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  section h1{
+    margin: 30px 0 20px 0;
+font-size: 55px;font-weight: 700;
+text-shadow: 2px 1px 5px blanchedalmond ;
+text-transform: uppercase;
+  }
+
+section h2{
+font-size: 45px;font-weight: 500;
+text-shadow: 1px 1px 2px blanchedalmond ;
+
+  }
+
+  section p{
+    font-size: 25px;word-spacing: 2px;font-weight: 400;
+text-shadow: 1px 1px 1px blanchedalmond ;
+margin-bottom: 25px;
+  }
+
+  section a{
+    padding: 12px 30px;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: double;
+    letter-spacing: 1px;
+    transition: all .5s  ease;
+  }
+
+  section .btone
+  {
+    background:rgb(68, 14, 88) ;
+    color: bisque;
+  }
+
+  .btone:hover
+  {
+    background:  bisque ;
+    color:rgb(68, 14, 88);
+  }
+  section .bttwo
+  {
+    background:  bisque ;
+    color:rgb(68, 14, 88);
+  }
+
+  .bttwo:hover{
+    background:rgb(68, 14, 88) ;
+    color: bisque;
+  }
+
+  .change::after
+  {
+    content:'';
+    animation: changetext 10s infinite linear;
+    color:maroon ;
+  }
+           @keyframes changetext{
+            0%{content: "Detection";}
+            50%{content: "Perception";}
+            100%{content: "Identification";}
+          }
