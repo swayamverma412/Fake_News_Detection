@@ -37,14 +37,13 @@
             <br><p class="text-primary"><b>{{prediction_text}}</b></p>
           </div>
           <div class="center">
-            <form action="prediction.html" method="POST">
+            <form action="{{ url_for('prediction') }}" method="POST">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Enter news headlines</label>
+                  <label for="news" class="form-label">Enter news headlines</label>
                   <input type="text" class="form-control" id="news" name="news" aria-describedby="emailHelp">
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
-              
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" value="Predict" class="btn btn-primary">Submit</button>
               </form>
           </div>
         </div>
