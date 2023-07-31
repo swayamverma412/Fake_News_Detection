@@ -1,36 +1,41 @@
-from flask import Flask, render_template, request, jsonify
-import nltk
+#Implement all this concept by machine learning with flask
+
+from flask import Flask, request, render_template
 import pickle
-from nltk.corpus import stopwords
-import re
-from nltk.stem.porter import PorterStemmer
+
+import warnings
+from sklearn.exceptions import DataConversionWarning
+
+warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
+warnings.filterwarnings("ignore", category=DataConversionWarning, module='sklearn')
+
+from scipy.sparse import csr_matrix
+
+vector = pickle.load(open("vectorizer.pkl" , 'rb'))
+model = pickle.load(open("finalized_model.pkl", 'rb'))
+
 app = Flask(__name__)
-ps = PorterStemmer()
-# Load model and vectorizer
-model = pickle.load(open('model2.pkl', 'rb'))
-tfidfvect = pickle.load(open('tfidfvect2.pkl', 'rb'))
-# Build functionalities
-@app.route('/', methods=['GET'])
+
+@app.route('/')
 def home():
-    return render_template('forest_fire.html')
-def predict(text):
-    review = re.sub('[^a-zA-Z]', ' ', text)
-    review = review.lower()
-    review = review.split()
-    review = [ps.stem(word) for word in review if not word in stopwords.words('english')]
-    review = ' '.join(review)
-    review_vect = tfidfvect.transform([review]).toarray()
-    prediction = 'FAKE' if model.predict(review_vect) == 0 else 'REAL'
-    return prediction
-@app.route('/', methods=['POST'])
-def webapp():
-    text = request.form['text']
-    prediction = predict(text)
-    return render_template('index.html', text=text, result=prediction)
-@app.route('/predict/', methods=['GET','POST'])
-def api():
-    text = request.args.get("text")
-    prediction = predict(text)
-    return jsonify(prediction=prediction)
-if __name__ == "__main__":
+    return render_template("index.html")
+
+@app.route('/prediction', methods=['GET', 'POST'])
+def prediction():
+    if request.method == "POST":
+        news = str(request.form['news'])
+        #print(news)
+
+        predict = model.predict(vector.transform([news]))
+        print(predict)
+
+        return render_template("prediction.html", prediction_text="News headline is -> {}".format(predict))
+
+
+    else:
+        return render_template("prediction.html")
+
+
+if __name__ == '__main__':
+    app.debug = True
     app.run()
