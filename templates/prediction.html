@@ -30,10 +30,10 @@
       <section class="text-gray-600 body-font -my-8">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-20">
-            <h2 class="text-xs text-green-500 tracking-widest font-medium title-font mb-1">Machine learning project</h2>
+            <h2 class="text-lg font-weight-bold text-green-500 tracking-widest font-medium title-font mb-1">Machine learning project</h2>
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Fake News Detection</h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Fake news detection involves using advanced algorithms and machine learning models to identify and differentiate between authentic and misleading information in order to ensure the dissemination of accurate news.</p>
-            <br><p class="text-primary"><b>{{prediction_text}}</b></p>
+            <br><p class="test-lg text-green-500"><b>{{prediction_text}}</b></p>
           </div>
           <div class="center">
             <form action="{{ url_for('prediction') }}" method="POST">
